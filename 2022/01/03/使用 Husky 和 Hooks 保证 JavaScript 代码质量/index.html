@@ -4,13 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>passiner-blog</title>
+  <title>使用 Husky 和 Hooks 保证 JavaScript 代码质量 | passiner-blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="passiner-blog">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="Ensuring code quality is very important for a maintainable and scalable application. But how can we enforce these quality standards?  代码质量对于一个可维护和可扩展的项目来说非常重要，但是我们如何确保代码的质量呢？  Well, with JavaScript, y">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Husky 和 Hooks 保证 JavaScript 代码质量">
+<meta property="og:url" content="http://example.com/2022/01/03/%E4%BD%BF%E7%94%A8%20Husky%20%E5%92%8C%20Hooks%20%E4%BF%9D%E8%AF%81%20JavaScript%20%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/index.html">
 <meta property="og:site_name" content="passiner-blog">
+<meta property="og:description" content="Ensuring code quality is very important for a maintainable and scalable application. But how can we enforce these quality standards?  代码质量对于一个可维护和可扩展的项目来说非常重要，但是我们如何确保代码的质量呢？  Well, with JavaScript, y">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-03T11:57:38.961Z">
+<meta property="article:modified_time" content="2022-01-03T13:09:04.685Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -69,9 +73,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-使用 Husky 和 Hooks 保证 JavaScript 代码质量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-使用 Husky 和 Hooks 保证 JavaScript 代码质量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/01/03/%E4%BD%BF%E7%94%A8%20Husky%20%E5%92%8C%20Hooks%20%E4%BF%9D%E8%AF%81%20JavaScript%20%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/" class="article-date">
   <time class="dt-published" datetime="2022-01-03T11:57:38.961Z" itemprop="datePublished">2022-01-03</time>
@@ -84,8 +86,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/01/03/%E4%BD%BF%E7%94%A8%20Husky%20%E5%92%8C%20Hooks%20%E4%BF%9D%E8%AF%81%20JavaScript%20%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/">使用 Husky 和 Hooks 保证 JavaScript 代码质量</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      使用 Husky 和 Hooks 保证 JavaScript 代码质量
     </h1>
   
 
@@ -243,160 +245,19 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-到底是用==，还是用===" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/01/03/%E5%88%B0%E5%BA%95%E6%98%AF%E7%94%A8==%EF%BC%8C%E8%BF%98%E6%98%AF%E7%94%A8===/" class="article-date">
-  <time class="dt-published" datetime="2022-01-03T06:58:59.807Z" itemprop="datePublished">2022-01-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/01/03/%E5%88%B0%E5%BA%95%E6%98%AF%E7%94%A8==%EF%BC%8C%E8%BF%98%E6%98%AF%E7%94%A8===/">到底是用==，还是用===</a>
-    </h1>
+    <a href="/2022/01/03/%E5%88%B0%E5%BA%95%E6%98%AF%E7%94%A8==%EF%BC%8C%E8%BF%98%E6%98%AF%E7%94%A8===/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">到底是用==，还是用===</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="先看MDN对于两种运算符的解释"><a href="#先看MDN对于两种运算符的解释" class="headerlink" title="先看MDN对于两种运算符的解释"></a>先看MDN对于两种运算符的解释</h3><ul>
-<li>等于运算符（==）<blockquote>
-<p>检查其两个操作数是否相等，并返回Boolean结果。与严格相等运算符（===）不同，它会尝试强制类型转换并且比较不同类型的操作数。</p>
-</blockquote>
-</li>
-<li>全等运算符 (===) <blockquote>
-<p>检查它的两个操作数是否相等，并且返回一个布尔值结果。与相等运算符不同，全等运算符总是认为不同类型的操作数是不同的。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="等于运算符（-）的强制类型转换"><a href="#等于运算符（-）的强制类型转换" class="headerlink" title="等于运算符（==）的强制类型转换"></a>等于运算符（==）的强制类型转换</h3><p>等于运算符（==）的比较过程，对于两侧待比较值A和B，使用抽象相等比较算法<a target="_blank" rel="noopener" href="https://262.ecma-international.org/5.1/#sec-11.9.3"><em>ECMA标准</em></a>，过程如下：</p>
-<ul>
-<li>如果 typeof(A) 和 typeof(B) 返回结果相同，则<ul>
-<li>如果typeof(A)返回undefined，返回true</li>
-<li>如果typeof(A)返回null，返回true</li>
-<li>如果typeof(A)返回number，则<ul>
-<li>如果A是NAN，返回false</li>
-<li>如果B是NAN，返回false</li>
-<li>如果A、B相同，返回true</li>
-<li>如果A是+0，B是-0，返回true</li>
-<li>如果A是-0，B是+0，返回true</li>
-<li>否则返回false</li>
-</ul>
-</li>
-<li>如果typeof(A)返回string：当A、B是完全相同的字符串（即长度相同，并且相同位置上字符相同），返回true；否则返回false</li>
-<li>如果typeof(A)返回boolean：当A、B都为true，或者都为false，返回true；否则返回false</li>
-<li>如果A、B指向相同对象，返回true</li>
-<li>否则返回false</li>
-</ul>
-</li>
-<li>如果A是null，B是undefined，返回true</li>
-<li>如果A是undefined，B是null，返回true</li>
-<li>如果typeof(A)返回number，typeof(B)返回string：返回 A == Number(B)的结果</li>
-<li>如果typeof(B)返回number，typeof(A)返回string：返回 B == Number(A)的结果</li>
-<li>如果typeof(A)返回boolean，返回Number(A) == B的结果</li>
-<li>如果typeof(B)返回boolean，返回A == Number(B)的结果</li>
-<li>如果typeof(A)返回number或string，typeof(B)返回object，返回 A == toPrimitive(B)的结果</li>
-<li>如果typeof(A)返回object，typeof(B)返回number或string，返回 toPrimitive(A) == B的结果</li>
-<li>否则返回false</li>
-</ul>
-<p>注：toPrimitive（）参数为对象时，会尝试使用对象的valueOf()和toString()方法将其转换为原始值</p>
-<h3 id="等于运算符（-）的比较过程"><a href="#等于运算符（-）的比较过程" class="headerlink" title="等于运算符（==）的比较过程"></a>等于运算符（==）的比较过程</h3><ul>
-<li>如果 typeof(A) 和 typeof(B) 返回结果相同，则</li>
-<li>如果typeof(A)返回undefined，返回true</li>
-<li>如果typeof(A)返回null，返回true</li>
-<li>如果typeof(A)返回number，则<ul>
-<li>如果A是NAN，返回false</li>
-<li>如果B是NAN，返回false</li>
-<li>如果A、B相同，返回true</li>
-<li>如果A是+0，B是-0，返回true</li>
-<li>如果A是-0，B是+0，返回true</li>
-<li>否则返回false</li>
-</ul>
-</li>
-<li>如果typeof(A)返回string：当A、B是完全相同的字符串（即长度相同，并且相同位置上字符相同），返回true；否则返回false</li>
-<li>如果typeof(A)返回boolean：当A、B都为true，或者都为false，返回true；否则返回false</li>
-<li>如果A、B指向相同对象，返回true</li>
-<li>否则返回false</li>
-</ul>
-<h3 id="推荐什么？"><a href="#推荐什么？" class="headerlink" title="推荐什么？"></a>推荐什么？</h3><p>通过对比两个运算符的比较过程，可以看到全等运算符（===）在值类型不同的情况下就会返回false，而等于运算符（==）在值类型不同时会继续进行强制类型转换。</p>
-<p>强制类型转换的过程对于我们的代码而言，并不是那么透明。我们并不知道当x == 1时，x是 ‘1’ 、1 还是 true，于是代码编写者在对同一变量进行判断时，可能会同时写出多种形式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (x) &#123;  &#125;</span><br><span class="line">if (x == &#x27;1&#x27;) &#123;  &#125;</span><br><span class="line">if (x == 1) &#123;  &#125;</span><br></pre></td></tr></table></figure>
-<p>这对于接手代码的人而言，就需要更多的思考，到底会不会走这段或那段逻辑。</p>
-<p>而全等运算符（===）则减轻了这样的心智负担，绝大多数情况下，我们都应该使用===。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/03/%E5%88%B0%E5%BA%95%E6%98%AF%E7%94%A8==%EF%BC%8C%E8%BF%98%E6%98%AF%E7%94%A8===/" data-id="ckxypyble0002yx9u9qpjh352" data-title="到底是用==，还是用===" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
-    <article id="post-antd-form" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/12/11/antd-form/" class="article-date">
-  <time class="dt-published" datetime="2021-12-11T09:55:48.889Z" itemprop="datePublished">2021-12-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/12/11/antd-form/">Antd Form V3 -&gt; V4</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="Antd-V4-为何要重写Form组件"><a href="#Antd-V4-为何要重写Form组件" class="headerlink" title="Antd V4 为何要重写Form组件"></a>Antd V4 为何要重写Form组件</h2><pre><code>性能。V3版本中Form组件有极大的性能瓶颈，同时如果业务代码处理不当，性能问题会更加突出
-</code></pre>
-<hr>
-<h3 id="V3版本中，From的实现思路："><a href="#V3版本中，From的实现思路：" class="headerlink" title="V3版本中，From的实现思路："></a>V3版本中，From的实现思路：</h3><p>V3版本中的From通过高阶组件来实现。在使用时，通过From.create()将业务组件进行包裹，将所有注册的form值，集中放在create后返回的新组件的state中。任意form值改变，触发新组件state的改变，即可自上而下进行组件的更新。这种更新是全量的，即被包裹的组件中的所有组件，都会经历一次render。</p>
-<p><img src="../images/antdformv3.png" alt="avatar"></p>
-<hr>
-<h3 id="V4版本中，From的实现思路："><a href="#V4版本中，From的实现思路：" class="headerlink" title="V4版本中，From的实现思路："></a>V4版本中，From的实现思路：</h3><p>V4版本中，注册的form的值将不放置在组件的state中，而是另辟一个store进行存储，任意值域在注册到store时，同时会订阅store，当store发生更新，进行判断是谁的订阅发生了更新，针对性的触发某一个值域的更新，这样就不会造成全量的render。</p>
-<p><img src="../images/antdformv4.png" alt="avatar"></p>
-<h3 id="具体源码解析"><a href="#具体源码解析" class="headerlink" title="具体源码解析"></a>具体源码解析</h3><p>……</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/12/11/antd-form/" data-id="ckxypybl50000yx9ufx2ub2te" data-title="Antd Form V3 -&gt; V4" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
 </section>
