@@ -14,7 +14,7 @@
 <meta property="og:description" content="先看MDN对于两种运算符的解释 等于运算符（&#x3D;&#x3D;） 检查其两个操作数是否相等，并返回Boolean结果。与严格相等运算符（&#x3D;&#x3D;&#x3D;）不同，它会尝试强制类型转换并且比较不同类型的操作数。   全等运算符 (&#x3D;&#x3D;&#x3D;)  检查它的两个操作数是否相等，并且返回一个布尔值结果。与相等运算符不同，全等运算符总是认为不同类型的操作数是不同的。    等于运算符（&#x3D;&#x3D;）的强制类型转换等于运算符（&#x3D;&#x3D;）的比较过程，对">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-03T06:58:59.807Z">
-<meta property="article:modified_time" content="2022-01-03T13:09:39.798Z">
+<meta property="article:modified_time" content="2022-01-03T13:34:55.288Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -136,7 +136,8 @@
 <li>否则返回false</li>
 </ul>
 <p>注：toPrimitive（）参数为对象时，会尝试使用对象的valueOf()和toString()方法将其转换为原始值</p>
-<h3 id="等于运算符（-）的比较过程"><a href="#等于运算符（-）的比较过程" class="headerlink" title="等于运算符（==）的比较过程"></a>等于运算符（==）的比较过程</h3><ul>
+<h3 id="全等运算符-的比较过程"><a href="#全等运算符-的比较过程" class="headerlink" title="全等运算符 (===)的比较过程"></a>全等运算符 (===)的比较过程</h3><p>全等运算符 (===)的比较过程，对于两侧待比较值A和B，使用全等比较算法<a target="_blank" rel="noopener" href="https://262.ecma-international.org/5.1/#sec-11.9.6"><em>ECMA标准</em></a>，过程如下：</p>
+<ul>
 <li>如果 typeof(A) 和 typeof(B) 返回结果相同，则</li>
 <li>如果typeof(A)返回undefined，返回true</li>
 <li>如果typeof(A)返回null，返回true</li>
@@ -163,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/03/%E5%88%B0%E5%BA%95%E6%98%AF%E7%94%A8==%EF%BC%8C%E8%BF%98%E6%98%AF%E7%94%A8===/" data-id="ckxypyble0002yx9u9qpjh352" data-title="到底是用==，还是用===" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/01/03/%E5%88%B0%E5%BA%95%E6%98%AF%E7%94%A8==%EF%BC%8C%E8%BF%98%E6%98%AF%E7%94%A8===/" data-id="ckxyq6q0200025s9ubnvg32yb" data-title="到底是用==，还是用===" class="article-share-link">Share</a>
       
       
       
