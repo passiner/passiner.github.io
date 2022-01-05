@@ -14,7 +14,7 @@
 <meta property="og:description" content="先看MDN对于两种运算符的解释 等于运算符（&#x3D;&#x3D;）  检查其两个操作数是否相等，并返回Boolean结果。与严格相等运算符（&#x3D;&#x3D;&#x3D;）不同，它会尝试强制类型转换并且比较不同类型的操作数。    全等运算符 (&#x3D;&#x3D;&#x3D;)   检查它的两个操作数是否相等，并且返回一个布尔值结果。与相等运算符不同，全等运算符总是认为不同类型的操作数是不同的。     等于运算符（&#x3D;&#x3D;）的强制类型转换等于运算符（&#x3D;&#x3D;）的比较">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-03T06:58:59.807Z">
-<meta property="article:modified_time" content="2022-01-03T13:37:02.591Z">
+<meta property="article:modified_time" content="2022-01-05T13:52:05.437Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -160,15 +160,22 @@
 <li>否则返回false</li>
 </ul>
 <h3 id="推荐什么？"><a href="#推荐什么？" class="headerlink" title="推荐什么？"></a>推荐什么？</h3><p>通过对比两个运算符的比较过程，可以看到全等运算符（===）在值类型不同的情况下就会返回false，而等于运算符（==）在值类型不同时会继续进行强制类型转换。</p>
-<p>强制类型转换的过程对于我们的代码而言，并不是那么透明。我们并不知道当x == 1时，x是 ‘1’ 、1 还是 true，于是代码编写者在对同一变量进行判断时，可能会同时写出多种形式：</p>
+<ul>
+<li><p>强制类型转换的过程对于我们的代码而言，并不是那么透明。我们并不知道当x == 1时，x是 ‘1’ 、1 还是 true，于是代码编写者在对同一变量进行判断时，可能会同时写出多种形式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (x) &#123;  &#125;</span><br><span class="line">if (x == &#x27;1&#x27;) &#123;  &#125;</span><br><span class="line">if (x == 1) &#123;  &#125;</span><br></pre></td></tr></table></figure>
 <p>这对于接手代码的人而言，就需要更多的思考，到底会不会走这段或那段逻辑。</p>
+</li>
+<li><p>另外等于运算符（==）还存在一些反直觉的结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[] == false // true</span><br><span class="line">[] == ![] // true</span><br><span class="line">5 == &#x27;05&#x27; // true</span><br></pre></td></tr></table></figure>
+<p>这都给我们的代码埋下了隐患。</p>
+</li>
+</ul>
 <p>而全等运算符（===）则减轻了这样的心智负担，绝大多数情况下，我们都应该使用===。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/03/%E5%88%B0%E5%BA%95%E6%98%AF%E7%94%A8==%EF%BC%8C%E8%BF%98%E6%98%AF%E7%94%A8===/" data-id="ckxyq93a700028p9ub2k1a9g1" data-title="到底是用==，还是用===" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/01/03/%E5%88%B0%E5%BA%95%E6%98%AF%E7%94%A8==%EF%BC%8C%E8%BF%98%E6%98%AF%E7%94%A8===/" data-id="cky1lo5b00002hb9u9z326kfb" data-title="到底是用==，还是用===" class="article-share-link">Share</a>
       
       
       

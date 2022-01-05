@@ -236,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/03/%E4%BD%BF%E7%94%A8%20Husky%20%E5%92%8C%20Hooks%20%E4%BF%9D%E8%AF%81%20JavaScript%20%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/" data-id="ckxyq93a500018p9udl1a0rua" data-title="使用 Husky 和 Hooks 保证 JavaScript 代码质量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/01/03/%E4%BD%BF%E7%94%A8%20Husky%20%E5%92%8C%20Hooks%20%E4%BF%9D%E8%AF%81%20JavaScript%20%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/" data-id="cky1lo5ay0001hb9uhqkz456s" data-title="使用 Husky 和 Hooks 保证 JavaScript 代码质量" class="article-share-link">Share</a>
       
       
       
@@ -335,15 +335,22 @@
 <li>否则返回false</li>
 </ul>
 <h3 id="推荐什么？"><a href="#推荐什么？" class="headerlink" title="推荐什么？"></a>推荐什么？</h3><p>通过对比两个运算符的比较过程，可以看到全等运算符（===）在值类型不同的情况下就会返回false，而等于运算符（==）在值类型不同时会继续进行强制类型转换。</p>
-<p>强制类型转换的过程对于我们的代码而言，并不是那么透明。我们并不知道当x == 1时，x是 ‘1’ 、1 还是 true，于是代码编写者在对同一变量进行判断时，可能会同时写出多种形式：</p>
+<ul>
+<li><p>强制类型转换的过程对于我们的代码而言，并不是那么透明。我们并不知道当x == 1时，x是 ‘1’ 、1 还是 true，于是代码编写者在对同一变量进行判断时，可能会同时写出多种形式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (x) &#123;  &#125;</span><br><span class="line">if (x == &#x27;1&#x27;) &#123;  &#125;</span><br><span class="line">if (x == 1) &#123;  &#125;</span><br></pre></td></tr></table></figure>
 <p>这对于接手代码的人而言，就需要更多的思考，到底会不会走这段或那段逻辑。</p>
+</li>
+<li><p>另外等于运算符（==）还存在一些反直觉的结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[] == false // true</span><br><span class="line">[] == ![] // true</span><br><span class="line">5 == &#x27;05&#x27; // true</span><br></pre></td></tr></table></figure>
+<p>这都给我们的代码埋下了隐患。</p>
+</li>
+</ul>
 <p>而全等运算符（===）则减轻了这样的心智负担，绝大多数情况下，我们都应该使用===。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/01/03/%E5%88%B0%E5%BA%95%E6%98%AF%E7%94%A8==%EF%BC%8C%E8%BF%98%E6%98%AF%E7%94%A8===/" data-id="ckxyq93a700028p9ub2k1a9g1" data-title="到底是用==，还是用===" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/01/03/%E5%88%B0%E5%BA%95%E6%98%AF%E7%94%A8==%EF%BC%8C%E8%BF%98%E6%98%AF%E7%94%A8===/" data-id="cky1lo5b00002hb9u9z326kfb" data-title="到底是用==，还是用===" class="article-share-link">Share</a>
       
       
       
@@ -390,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/12/11/antd-form/" data-id="ckxyq93a000008p9u4jf49xx8" data-title="Antd Form V3 -&gt; V4" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/12/11/antd-form/" data-id="cky1lo5au0000hb9ubft18x6j" data-title="Antd Form V3 -&gt; V4" class="article-share-link">Share</a>
       
       
       
